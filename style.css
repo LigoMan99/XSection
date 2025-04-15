@@ -1,0 +1,320 @@
+:root {
+    /* Dark theme (default) */
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --menu-bg: rgba(0, 0, 0, 0.7);
+    --control-bg: rgba(0, 0, 0, 0.7);
+    --hover-bg: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --menu-bg: rgba(255, 255, 255, 0.9);
+    --control-bg: rgba(255, 255, 255, 0.9);
+    --hover-bg: rgba(0, 0, 0, 0.1);
+    --border-color: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#logo {
+    height: 30px;
+    margin-right: 15px;
+    filter: brightness(1);
+}
+
+#targetBtn, #zoomExtentsBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    padding: 5px;
+    transition: color 0.3s;
+}
+
+#targetBtn:hover, #zoomExtentsBtn:hover {
+    color: #007bff;
+}
+
+#targetBtn.active, #zoomExtentsBtn.active {
+    color: #007bff;
+}
+
+#menu button.active {
+    background-color: #3498db;
+    color: white;
+}
+
+#sectionControls {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+#sectionControls button {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+#sectionControls button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#sectionControls button.active {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+#sectionControls input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#legend-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 300px;
+}
+
+.legend {
+    margin-top: 10px;
+}
+
+.legend h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.legend-section {
+    margin-bottom: 15px;
+}
+
+.legend-section h4 {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 3px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+.legend-item span {
+    font-size: 14px;
+    color: #fff;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#controls {
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    width: 300px;
+    max-width: 300px;
+}
+
+.control-group {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.control-group label {
+    margin-left: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.control-group input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.drillhole-table-container {
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+#drillholeFilter {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#drillholeTable {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    table-layout: fixed;
+}
+
+#drillholeTable th, #drillholeTable td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#drillholeTable th:first-child, #drillholeTable td:first-child {
+    width: 60%;
+}
+
+#drillholeTable th:last-child, #drillholeTable td:last-child {
+    width: 40%;
+    text-align: right;
+}
+
+#drillholeTable th {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+}
+
+#drillholeTable tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#drillholeTable input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+#themeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#themeBtn:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Update existing styles to use CSS variables */
+#controls {
+    background-color: var(--control-bg);
+    color: var(--text-color);
+}
+
+#menu button {
+    color: var(--text-color);
+}
+
+#drillholeFilter {
+    background-color: var(--hover-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+#drillholeTable {
+    color: var(--text-color);
+}
+
+#drillholeTable th, #drillholeTable td {
+    border-bottom: 1px solid var(--border-color);
+}
+
+#drillholeTable tbody tr:hover {
+    background-color: var(--hover-bg);
+}
+
+#legend-container {
+    background: var(--control-bg);
+}
+
+.legend h3, .legend h4, .legend-item span {
+    color: var(--text-color);
+} 

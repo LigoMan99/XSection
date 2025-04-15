@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drillhole Visualization</title>
+    <link rel="icon" type="image/png" href="Fav Icon . Light . Gradient Mark.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <img src="Full Logo . Light . Solid Mark.png" alt="FastGeo Logo" id="logo">
+            <button id="targetBtn" title="Set Rotation Center"><i class="fas fa-crosshairs"></i></button>
+            <button id="zoomExtentsBtn" title="Zoom to Extents"><i class="fas fa-expand"></i></button>
+            <button id="viewDownBtn" title="View from Top (Down)"><i class="fas fa-arrow-down"></i></button>
+            <button id="viewEastBtn" title="View from East"><i class="fas fa-arrow-right"></i></button>
+            <button id="viewNorthBtn" title="View from North"><i class="fas fa-arrow-up"></i></button>
+            <button id="toggleTableBtn" title="Toggle Drillhole Table"><i class="fas fa-table"></i></button>
+        </div>
+        <div id="theme-toggle">
+            <button id="themeBtn" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div id="controls">
+            <div class="control-group">
+                <input type="checkbox" id="showTrace">
+                <label for="showTrace">Drillhole Trace</label>
+            </div>
+            <div class="drillhole-table-container">
+                <input type="text" id="drillholeFilter" placeholder="Filter drillholes...">
+                <table id="drillholeTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"> HoleID</th>
+                            <th>Depth</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div id="legend-container">
+            <div class="legend">
+                <h3>Legend</h3>
+                <div class="legend-section">
+                    <h4>Geology Types</h4>
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #FFA500;"></div>
+                        <span>Oxide (OX)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #00FF00;"></div>
+                        <span>Fresh (FR)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #8B4513;"></div>
+                        <span>Breccia (BR)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+    <script src="drillhole.js"></script>
+    <script src="main.js"></script>
+</body>
+</html> 
